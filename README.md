@@ -10,6 +10,7 @@ Our task manager website is designed with user convenience in mind, providing a 
 
 ____________________________________________
 
-![image](https://github.com/bosesupriyo/Task-Manager/assets/124809398/68b634e2-4987-48a1-a81c-707ba2a45267)
+![Screenshot 2024-07-09 120540](https://github.com/bosesupriyo/Task-Manager/assets/124809398/d0b75033-3048-4c36-9717-ead17ed5576a)
 
-![image](https://github.com/bosesupriyo/Task-Manager/assets/124809398/813f17c8-c90c-46c8-94cb-12f0acd68237)
+![image](https://github.com/bosesupriyo/Task-Manager/assets/124809398/b8687d80-9a65-4905-960e-56b4e0391400)
+

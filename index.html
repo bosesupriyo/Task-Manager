@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+
+
+</head>
+
+<body onload="initializeDB()">
+    <!-- Used for Creating Element-->
+    <div id="left">
+        <form>
+            <p class="name">Choose Date</p>
+            <input type="date" class="date1" required>
+            <br>
+            <p class="name">Event Name</p>
+            <input type="text" placeholder="Enter your event name" class="ename" required oninput="textCount(this,80)" maxlength="80">
+            <p id="charscount">
+                <p class="textRemaining">80 / 80 characters left</p> 
+            </p>
+            <!-- <br> -->
+            <p class="name">Start Time</p>
+            <input type="time" class="setime" required>
+            <br>
+            <p class="name">End Time</p>
+            <input type="time" class="setime" required>
+            <br>
+            <p class="name">Description</p>
+            <textarea placeholder="Enter your event details" cols="22" rows="10" class="des" oninput="textCount(this,300)" maxlength="300"></textarea>
+            <p id="charscount">
+                <p class="textRemaining">300 / 300 characters left</p> 
+            </p>
+            <br>
+            <input type="submit" class="button1" value="Create Your Event" onclick="addData(this)">
+        </form>
+
+        <br><br>
+    </div>
+
+    <!--Used for Display and Delete element-->
+    <div id="right">
+        <div id="topbar">
+            <!-- <p class="name">Your Event Lists <input type="date" title="Select your date" class="date2"><button
+                class="button2">Search <i class='fas fa-arrow-right'></i></button></p> -->
+            <div class="name1">
+                <div class="name2">
+                    Event Lists :
+                </div>
+            </div>
+            <div class="date2">
+                <input type="date" title="Select your date" class="date3">
+            </div>
+            <div class="button2" onclick="dateFilter()">
+                <input type="submit" value="Search" class="button3" >
+            </div>
+
+        </div>
+
+        <div id="boxContainer">
+            <!-- <p>03-March-2024</p>
+            <div class="box" id="box1">
+                <div class="topDiv">
+                    <div class="star"> <i class='fas fa-star'></i></div>
+                    <div class="stet"><b>
+                            <font class="text">10:00 am - 10:30 am <i class='fas fa-chevron-circle-right'> </i></font>
+                        </b></div>
+                    <div class="arrow"></i></div>
+                    <div class="gap"></div>
+                    <div class="delIcon"><i class='fas fa-trash'></i></div>
+                </div>
+                <p class="eventName">Classroom meet : Python Class</p>
+                <p class="downarrow">
+                    <i class='fas fa-chevron-down' style='font-size:24px' onclick="toggleArrowDown(this)"></i>
+                </p>
+                <p class="description" hidden>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vitae felis non urna sagittis
+                    faucibus. Quisque imperdiet arcu in urna semper vehicula. Quisque neque leo, rutrum vel laoreet
+                    quis, tincidunt id orci. Aliquam dignissim suscipit justo vel tempor. Sed nec gravida dolor, vel
+                    vestibulum lectus. Vivamus purus lacus, imperdiet non libero nec, scelerisque faucibus dui. Aliquam
+                    erat volutpat. Quisque convallis lacus non lectus luctus sodales. Etiam at lacus eu tellus egestas
+                    facilisis. Praesent ultricies, nisl eu placerat pharetra, leo velit eleifend lectus, a fringilla
+                    nisl dui ac lectus. Morbi sollicitudin sapien in facilisis maximus. Phasellus urna odio, lacinia
+                    quis elit ac, molestie faucibus orci. Proin venenatis ornare lobortis. Morbi consectetur arcu ac
+                    pulvinar ultrices.
+                </p>
+            </div>
+
+            <div class="box" id="box2">
+                <div class="topDiv">
+                    <div class="star"> <i class='fas fa-star'></i></div>
+                    <div class="stet"><b>
+                            <font class="text">10:00 am - 10:30 am <i class='fas fa-chevron-circle-right'> </i></font>
+                        </b></div>
+                    <div class="arrow"></i></div>
+                    <div class="gap"></div>
+                    <div class="delIcon"><i class='fas fa-trash'></i></div>
+                </div>
+                <p class="eventName">Classroom meet : Python Class</p>
+                <p class="downarrow">
+                    <i class='fas fa-chevron-down' style='font-size:24px' onclick="toggleArrowDown(this)"></i>
+                </p>
+                <p class="description" hidden>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vitae felis non urna sagittis
+                    faucibus. Quisque imperdiet arcu in urna semper vehicula. Quisque neque leo, rutrum vel laoreet
+                    quis, tincidunt id orci. Aliquam dignissim suscipit justo vel tempor. Sed nec gravida dolor, vel
+                    vestibulum lectus. Vivamus purus lacus, imperdiet non libero nec, scelerisque faucibus dui. Aliquam
+                    erat volutpat. Quisque convallis lacus non lectus luctus sodales. Etiam at lacus eu tellus egestas
+                    facilisis. Praesent ultricies, nisl eu placerat pharetra, leo velit eleifend lectus, a fringilla
+                    nisl dui ac lectus. Morbi sollicitudin sapien in facilisis maximus. Phasellus urna odio, lacinia
+                    quis elit ac, molestie faucibus orci. Proin venenatis ornare lobortis. Morbi consectetur arcu ac
+                    pulvinar ultrices.
+                </p>
+            </div>
+            <p>04-March-2024</p>
+            <div class="box" id="box3">
+                <div class="topDiv">
+                    <div class="star"> <i class='fas fa-star'></i></div>
+                    <div class="stet"><b>
+                            <font class="text">10:00 am - 10:30 am <i class='fas fa-chevron-circle-right'> </i></font>
+                        </b></div>
+                    <div class="arrow"></i></div>
+                    <div class="gap"></div>
+                    <div class="delIcon"><i class='fas fa-trash'></i></div>
+                </div>
+                <p class="eventName">Classroom meet : Python Class</p>
+                <p class="downarrow">
+                    <i class='fas fa-chevron-down' style='font-size:24px' onclick="toggleArrowDown(this)"></i>
+                </p>
+                <p class="description" hidden>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vitae felis non urna sagittis
+                    faucibus. Quisque imperdiet arcu in urna semper vehicula. Quisque neque leo, rutrum vel laoreet
+                    quis, tincidunt id orci. Aliquam dignissim suscipit justo vel tempor. Sed nec gravida dolor, vel
+                    vestibulum lectus. Vivamus purus lacus, imperdiet non libero nec, scelerisque faucibus dui. Aliquam
+                    erat volutpat. Quisque convallis lacus non lectus luctus sodales. Etiam at lacus eu tellus egestas
+                    facilisis. Praesent ultricies, nisl eu placerat pharetra, leo velit eleifend lectus, a fringilla
+                    nisl dui ac lectus. Morbi sollicitudin sapien in facilisis maximus. Phasellus urna odio, lacinia
+                    quis elit ac, molestie faucibus orci. Proin venenatis ornare lobortis. Morbi consectetur arcu ac
+                    pulvinar ultrices.
+                </p>
+            </div>
+
+            <div class="box" id="box4">
+                <div class="topDiv">
+                    <div class="star"> <i class='fas fa-star'></i></div>
+                    <div class="stet"><b>
+                            <font class="text">10:00 am - 10:30 am <i class='fas fa-chevron-circle-right'> </i></font>
+                        </b></div>
+                    <div class="arrow"></i></div>
+                    <div class="gap"></div>
+                    <div class="delIcon"><i class='fas fa-trash'></i></div>
+                </div>
+                <p class="eventName">Classroom meet : Python Class</p>
+                <p class="downarrow">
+                    <i class='fas fa-chevron-down' style='font-size:24px' onclick="toggleArrowDown(this)"></i>
+                </p>
+                <p class="description" hidden>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vitae felis non urna sagittis
+                    faucibus. Quisque imperdiet arcu in urna semper vehicula. Quisque neque leo, rutrum vel laoreet
+                    quis, tincidunt id orci. Aliquam dignissim suscipit justo vel tempor. Sed nec gravida dolor, vel
+                    vestibulum lectus. Vivamus purus lacus, imperdiet non libero nec, scelerisque faucibus dui. Aliquam
+                    erat volutpat. Quisque convallis lacus non lectus luctus sodales. Etiam at lacus eu tellus egestas
+                    facilisis. Praesent ultricies, nisl eu placerat pharetra, leo velit eleifend lectus, a fringilla
+                    nisl dui ac lectus. Morbi sollicitudin sapien in facilisis maximus. Phasellus urna odio, lacinia
+                    quis elit ac, molestie faucibus orci. Proin venenatis ornare lobortis. Morbi consectetur arcu ac
+                    pulvinar ultrices.
+                </p>
+            </div>
+         -->
+        </div>
+
+    </div>
+
+
+
+    <footer>
+        <!-- <font>Rights reserved.</font> -->
+    </footer>
+</body>
+
+</html>

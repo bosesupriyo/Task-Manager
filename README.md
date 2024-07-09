@@ -1,5 +1,7 @@
 # Task-Manager Web Application
 
+# LINK - https://bosesupriyo.github.io/Task-Manager/
+
 We have developed a sophisticated task manager website designed to streamline users' task management. Our platform enables users to effortlessly enter tasks, specifying both the start and end dates and times.
 
 Once a task is added, it appears in the user's Google Calendar, allowing them to see all their commitments in one place. Additionally, users receive timely notifications as the start time of each task approaches, helping them stay organized and ensuring they never miss a scheduled activity. This feature is particularly beneficial for maintaining productivity and managing time effectively.
